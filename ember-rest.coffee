@@ -53,6 +53,7 @@ class Ember.Resource extends Ember.Object
   serialize: ->
     rv = {}
     rv[@name][property] = @serializeProperty property for property in @properties
+    rv
   
   # Generate an individual property's JSON representation
   # 
@@ -71,7 +72,6 @@ class Ember.Resource extends Ember.Object
   # Set an individual property from its value in JSON
   # 
   deserializeProperty: (property) -> @set property, value
-  
   
   # Create (if new) or update (if existing) record via ajax
   # 
@@ -102,7 +102,6 @@ class Ember.Resource extends Ember.Object
       dataType: 'json'
       type: 'DELETE'
   
-  
   # The URL for this resource, based on `url` and `id` (which will be
   # undefined for new resources).
   # 
@@ -128,7 +127,7 @@ class Ember.ResourceController extends Ember.ArrayController
   
   # Create and load `Ember.Resource` objects from a JSON array
   # 
-  loadAll: (json) -> @load j for j in json
+  loadAll: (json) -> @load j for j in json; return
   
   # Replace this controller's contents with an ajax call to `url`
   # 
