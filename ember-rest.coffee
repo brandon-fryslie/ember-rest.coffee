@@ -13,7 +13,7 @@
     http://www.opensource.org/licenses/mit-license.php
 ###
 
-###    
+###
   A model class for RESTful resources
 
   Extend this class and define the following properties:
@@ -34,7 +34,7 @@
   * `validate()`
 ###
 
-class Ember.Resource extends Ember.Object
+Ember.Resource = Ember.Object.extend
   name:       Ember.require()
   properties: Ember.require()
   url:        Ember.require()
@@ -45,7 +45,7 @@ class Ember.Resource extends Ember.Object
   duplicateProperties: (source) ->
     @set property, source.get property for property in @properties
     return
-  
+
   # Generate this resource's JSON representation
   # 
   # Override this or `serializeProperty` to provide custom serialization
@@ -54,13 +54,13 @@ class Ember.Resource extends Ember.Object
     rv = {}
     rv[@name][property] = @serializeProperty property for property in @properties
     rv
-  
+
   # Generate an individual property's JSON representation
   # 
   # Override to provide custom serialization
   # 
   serializeProperty: (property) -> @get property
-  
+
   # Set this resource's properties from JSON
   # 
   deserialize: (json) ->
@@ -68,11 +68,11 @@ class Ember.Resource extends Ember.Object
     @deserializeProperty property, value for own property, value in json   
     Ember.endPropertyChanges(@)
     @
-  
+
   # Set an individual property from its value in JSON
   # 
   deserializeProperty: (property) -> @set property, value
-  
+
   # Create (if new) or update (if existing) record via ajax
   # 
   # Will call validate() if defined for this record
@@ -86,7 +86,7 @@ class Ember.Resource extends Ember.Object
       done: -> @
       always: -> f(); @
     } if (error = @validate?())
-    
+  
     jQuery.ajax
       url: @_url()
       data: @serialize()
@@ -101,7 +101,7 @@ class Ember.Resource extends Ember.Object
       url: @._url()
       dataType: 'json'
       type: 'DELETE'
-  
+
   # The URL for this resource, based on `url` and `id` (which will be
   # undefined for new resources).
   # 
@@ -116,19 +116,19 @@ class Ember.Resource extends Ember.Object
   # * `url` -- (optional) the base url of the resource (e.g. '/contacts/active');
   #      will default to the `url` for `type`
   # 
-class Ember.ResourceController extends Ember.ArrayController
+
+Ember.ResourceController = Ember.ArrayController.extend
   type: Ember.required()
   content: []
-  
+
   # Create and load a single `Ember.Resource` from JSON
-  
+  # 
   load: (json) ->
     @pushObject @get('type').create().deserialize json
-  
+
   # Create and load `Ember.Resource` objects from a JSON array
   # 
   loadAll: (json) -> @load j for j in json; return
-  
   # Replace this controller's contents with an ajax call to `url`
   # 
   findAll: ->
