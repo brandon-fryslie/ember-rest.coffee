@@ -1,5 +1,18 @@
 # ember-rest.coffee
 
+RallySoftware/app-catalog@ce4dc23
+
+mojombo/github-flavored-markdown@16c999e8c71134401a78d4d46435517b2271d6ac
+
+16c999e8c71134401a78d4d46435517b2271d6ac
+
+* SHA: 16c999e8c71134401a78d4d46435517b2271d6ac
+* User@SHA: mojombo@16c999e8c71134401a78d4d46435517b2271d6ac
+* User/Repository@SHA: mojombo/github-flavored-markdown@16c999e8c71134401a78d4d46435517b2271d6ac
+* #Num: #1
+* User#Num: mojombo#1
+* User/Repository#Num: mojombo/github-flavored-markdown#1
+
 A *very* simple library for RESTful resources in Ember.js.
 
 Code and this documentation adapeted From ember-rest.js by cerebris
@@ -136,5 +149,7 @@ Coming soon...
 https://github.com/dgeb/ember_rest_example
 
 ## License
+
+
 
 Copyright 2012 Cerebris Corporation. MIT License (see LICENSE for details).
