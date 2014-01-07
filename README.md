@@ -1,9 +1,5 @@
 # ember-rest.coffee
 
-RallySoftware/app-catalog@ce4dc23
-
-mojombo/github-flavored-markdown@16c999e8c71134401a78d4d46435517b2271d6ac
-
 A *very* simple library for RESTful resources in Ember.js.
 
 Code and this documentation adapeted From ember-rest.js by cerebris
